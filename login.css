@@ -1,0 +1,40 @@
+
+#login form {
+    background-color:#f6dabb;
+    padding:3em;
+    margin:2em;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    border-radius: 20px;
+
+}
+.button{
+    display: grid;
+    padding: 3em;
+    place-items: center;
+    text-align: center;
+}
+button{
+    background-color:#f170b1;
+    border:#e94597;
+    font-size: 1.5em;
+    height: 2em;
+    width:7em;
+    border-radius: 10px;
+}
+input{
+    font-size: 20px;
+}
+.register{
+    text-decoration: none;
+    color:#dc3187;
+}
+.frase {
+    display:grid;
+    place-items: center;
+    text-align: center;
+    font-weight: 10px;
+    font-size: 20px;
+    padding:1em;
+}
