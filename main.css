@@ -1,0 +1,109 @@
+html{
+    background-color: #ac97bd;
+}
+/*template comum em todas as paginas-header*/
+body>header{
+    background-color:#481666 ;
+    padding: 1em; 
+    display: grid;
+    grid-template-columns:auto 1fr repeat(2, auto);
+    grid-column-gap:10px;
+}
+.log_reg{
+    text-decoration: none;
+    color:white;
+    text-align: center;
+    align-self: center;
+}
+
+.menu ul{
+    display:grid;
+    grid-template-columns:repeat(4, auto);
+    background-color: #f8b8d8;
+    text-align: center;
+    list-style: none;
+    padding: 10px;
+    margin:0;
+}
+.menu a{
+    text-decoration: none;
+    color:#7410ad;
+}
+
+/*login e register template*/
+#login_register form {
+    background-color:#e3ceef ;
+    padding:3em;
+    margin:2em;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    border-radius: 20px;
+
+}
+.button{
+    display: grid;
+    padding: 3em;
+    place-items: center;
+    text-align: center;
+}
+button{
+    background-color:#7410ad;
+    border:#7410ad;
+    font-size: 1.5em;
+    height: 2em;
+    width:7em;
+    border-radius: 10px;
+    color:white;
+}
+input{
+    font-size: 20px;
+}
+.done{
+    text-decoration: none;
+    color:#660c9b;
+}
+.frase {
+    display:grid;
+    place-items: center;
+    text-align: center;
+    font-weight: 10px;
+    font-size: 20px;
+    padding:1em;
+}
+
+/*paginas do menu*/
+.banner {
+    text-align: center;
+}
+.tips{
+    background-color: #e3ceef;
+    padding:10px;
+    border-radius: 10px;
+    margin:10px;
+}
+
+.tips h2{
+    text-align: center;
+    background-color:white;
+    margin:0;
+}
+
+
+.questions{
+    background-color: #e3ceef;
+    padding:10px;
+    border-radius: 10px;
+    margin:10px;
+}
+.questions h2{
+    text-align: center;
+    background-color:white;
+    margin:0;
+}
+
+footer{
+    position: absolute;
+    bottom:0;
+    right: 10px;
+}
