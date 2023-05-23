@@ -17,6 +17,31 @@
             $this->role = $role;
         }
 
+        public function getId(): int
+        {
+            return $this->id;
+        }
+    
+        public function getName(): string
+        {
+            return $this->name;
+        }
+    
+        public function getUsername(): string
+        {
+            return $this->username;
+        }
+    
+        public function getEmail(): string
+        {
+            return $this->email;
+        }
+    
+        public function getRole(): string
+        {
+            return $this->role;
+        }
+
         static function getUserWithPassword(PDO $db, string $email, string $password) : ?User {
             $stmt = $db->prepare('
               SELECT id, name, username, email, role

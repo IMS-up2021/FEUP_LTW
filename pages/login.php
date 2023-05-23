@@ -14,7 +14,6 @@
 
     drawLoginForm($session);
 
-    drawFAQ();
     drawFooter();
 
 ?>

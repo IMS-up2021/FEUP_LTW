@@ -38,7 +38,7 @@
             $statement = $db->prepare($query);
             $statement->bindParam(':title', $title);
             $statement->bindParam(':description', $description);
-            $statement->bindParam(':date', $date->format('Y-M-D'));
+            $statement->bindParam(':date', $date->format('Y-m-d'));
             $statement->bindParam(':status', $status);
             $statement->bindParam(':creator_id', $creator_id);
             $statement->bindParam(':assignee_id', $assignee_id);
@@ -62,6 +62,7 @@
                 return null;
             }
         }
+
     }
 
 

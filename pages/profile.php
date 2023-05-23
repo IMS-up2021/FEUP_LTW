@@ -19,10 +19,10 @@
 
 	$user = User::getUser($db, $session->getId());
 
+	
 	drawHeader($session);
 	drawLogo();
 	drawProfile($user);
   	drawFooter();
-	drawFAQ();
 
 ?>

@@ -13,7 +13,6 @@
 
     drawRegisterForm($session);
 
-    drawFAQ();
     drawFooter();
 
 ?>

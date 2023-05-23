@@ -6,19 +6,53 @@
   require_once(__DIR__ . '/../utils/session.php');
 ?>
 
-<?php function drawQuestion(Question $question, User $user, array $answers, Session $session) { ?>
-  <h2><?=$question->title?>
-    <?php if($session->isLoggedIn()) {?>
-      <a href="../pages/edit_question.php?id=<?=$question->id?>"><i class="fa-solid fa-pen action"></i></a>
-    <?php } ?>
-  </h2>
-  <h3><a href="../pages/user.php?id=<?=$user->id?>"><?=$user->name?></a></h3>      
-  <table id="answers">
-    <tr><th scope="col">#</th><th scope="col">Answer</th><th scope="col">Timestamp</th></tr>
-    <?php foreach ($answers as $id => $answer) { ?>
-      <tr><td><?=$id + 1?></td><td><?=$answer->text?></td><td><?=$answer->timestamp()?></td></tr>
-    <?php } ?>
-  </table>
+<?php function drawSimpleTicket(Ticket $ticket, string $department_name) { ?>
+  <div class="ticket">
+    <h3><a href="ticket.php?ticketId=<?php echo $ticket->id; ?>" class="ticket-link">Ticket <?php echo $ticket->id; ?></a></h3>
+    <p><strong>Title:</strong> <?php echo $ticket->title; ?></p>
+    <p><strong>Description:</strong> <?php echo $ticket->description; ?></p>
+    <p><strong>Date:</strong> <?php echo $ticket->date->format('Y-m-d'); ?></p>
+    <p><strong>Status:</strong> <?php echo $ticket->status; ?></p>
+    <p><strong>Department:</strong> <?php echo $department_name ?? 'None'; ?></p>
+  </div>
+<?php } ?>
+
+<?php function drawTicket(Session $session, Ticket $ticket, string $department_name) { ?>
+  <div class="ticket">
+    <h3><a href="ticket.php?ticketId=<?php echo $ticket->id; ?>" class="ticket-link">Ticket <?php echo $ticket->id; ?></a></h3>
+    <p><strong>Title:</strong> <?php echo $ticket->title; ?></p>
+    <p><strong>Description:</strong> <?php echo $ticket->description; ?></p>
+    <p><strong>Date:</strong> <?php echo $ticket->date->format('Y-m-d'); ?></p>
+    <p><strong>Status:</strong> <?php echo $ticket->status; ?></p>
+    <p><strong>Department:</strong> <?php echo $department_name ?? 'None'; ?></p>
+
+    <?php if ($session->getId() === $ticket->creator_id): ?>
+    <button class="edit-ticket-btn" data-ticket-id="<?php echo $ticket->id; ?>">Edit Ticket</button>
+    <?php endif; ?>
+
+    <form id="editTicketForm" class="ticket-form" style="display: none;">
+      <h2>Edit Ticket</h2>
+      <input type="hidden" id="editTicketId" name="editTicketId" value="">
+      
+      <label for="editTicketTitle">Title</label>
+      <input type="text" id="editTicketTitle" name="editTicketTitle">
+
+      <label for="editTicketDescription">Description</label>
+      <textarea id="editTicketDescription" name="editTicketDescription"></textarea>
+
+      <label for="editTicketDepartment">Department</label>
+      <select id="editTicketDepartment" name="editTicketDepartment">
+        <option value="">None</option>
+      </select>
+
+      <div class="button">
+        <button id="saveChangesBtn" type="submit">Save Changes</button>
+      </div>
+  </form>
+
+
+  </div>
+  <script src="../javascript/script.js"></script>
 <?php } ?>
 
 <?php function drawEditQuestion(Question $question) { ?>
