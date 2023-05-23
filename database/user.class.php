@@ -103,14 +103,14 @@
         //admin functions 
         public function upgradeRole(PDO $db, string $newRole) {
           if ($this->role === 'admin') {
-              $stmt = $db->prepare('UPDATE users SET role = ? WHERE id = ?');
-              $stmt->execute([$newRole, $this->id]);
-              if ($stmt->rowCount() > 0) {
-                  $this->role = $newRole;
-                  return true;
-              }
+            $stmt = $db->prepare('UPDATE users SET role = ? WHERE id = ?');
+            $stmt->execute([$newRole, $this->id]);
+            if ($stmt->rowCount() > 0) {
+              $this->role = $newRole;
+              return json_encode(['success' => true]);
+            }
           }
-          return false;
+          return json_encode(['success' => false]);
         }
 
         function addDepartment(PDO $db, string $departmentName) {

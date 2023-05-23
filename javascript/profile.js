@@ -1,11 +1,31 @@
 const editProfileButton = document.getElementById('editProfile');
 const newTicketButton = document.getElementById('newTicket');
 const myTicketsButton = document.getElementById('myTickets');
+
+const getTicketsByDepartmentButton = document.getElementById('getTicketsByDepartment');
+const updateDepartmentButton = document.getElementById('updateDepartment');
+const updateAssignedAgentButton = document.getElementById('updateAssignedAgent');
+const updateTicketStatusButton = document.getElementById('updateTicketStatus');
+
+const updateRoleButton = document.getElementById('updateRole');
+const addDepartmentButton = document.getElementById('addDepartment');
+const assignAgentToDepartmentButton = document.getElementById('assignAgentToDepartment');
+
 const contentContainer = document.getElementById('contentContainer');
 
 editProfileButton.addEventListener('click', loadContent.bind(null, 'editProfile'));
 newTicketButton.addEventListener('click', loadContent.bind(null, 'newTicket'));
 myTicketsButton.addEventListener('click', loadContent.bind(null, 'myTickets'));
+
+getTicketsByDepartmentButton.addEventListener('click',loadContent.bind(null, 'getTicketsByDepartment'));
+updateDepartmentButton.addEventListener('click', loadContent.bind(null, 'updateDepartment'));
+updateAssignedAgentButton.addEventListener('click', loadContent.bind(null, 'updateAssignedAgent'));
+updateTicketStatusButton.addEventListener('click', loadContent.bind(null, 'updateTicketStatus'));
+
+updateRoleButton.addEventListener('click', loadContent.bind(null, 'updateRole'));
+addDepartmentButton.addEventListener('click', loadContent.bind(null, 'addDepartment'));
+assignAgentToDepartmentButton.addEventListener('click', loadContent.bind(null, 'assignAgentToDepartment'));
+
 
 function loadContent(action) {
   const xhttp = new XMLHttpRequest();
@@ -25,6 +45,27 @@ function loadContent(action) {
       break;
     case 'myTickets':
       phpFunction = 'getMyTicketsContent';
+      break;
+    case 'getTicketsByDepartment':
+      phpFunction = '';
+      break;
+    case 'updateDepartment':
+      phpFunction = '';
+      break;
+    case 'updateAssignedAgent':
+      phpFunction = '';
+      break;
+    case 'updateTicketStatus':
+      phpFunction = '';
+      break;
+    case 'updateRole':
+      phpFunction = 'getUpdatedRole';
+      break;
+    case 'addDepartment':
+      phpFunction = 'getAddDepartment';
+      break;
+    case 'assignAgentToDepartment':
+      phpFunction = 'getAssignAgentToDepartment';
       break;
   }
 
@@ -85,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
       };
       xhr.send();
   });
+  
 
   function generateTicketHTML(ticket, departmentName) {
     return `

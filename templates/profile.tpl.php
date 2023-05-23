@@ -54,10 +54,32 @@ function getMyTicketsContent() {
     return $content;
 }
 
+function getUpdatedRole(User $user){
+    $content = '
+        <form action="../actions/upgrade_role.php" method="POST" class="role_upgrade">
+            <label for="newRole">New Role:</label>
+            <input type="text" id="newRole" name="newRole" required><br></br>
+
+            <div class="button">
+                <button type="submit">Upgrade Role</button>
+            </div>
+        </form>';
+
+    return $content;
+  }
+
+function getAddDepartment(){
+
+}
+
+function getAssignAgentToDepartment(){
+
+}
+
 
 function drawProfile(User $user) {
 
-    if ($user->getRole() == 'Client'):
+    if ($user->getRole() === 'Client'):
 ?>
     <div id="menu">
         <h2>Profile</h2>
@@ -72,7 +94,7 @@ function drawProfile(User $user) {
 
     <script src="/../javascript/profile.js"></script>
  <?php endif;    
-    if ($user->getRole() == 'Agent'):
+    if ($user->getRole() === 'Agent'):
 ?>
         <div id="menu">
         <h2>Profile</h2>
