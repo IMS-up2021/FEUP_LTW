@@ -54,9 +54,6 @@ function getMyTicketsContent() {
     return $content;
 }
 
-function getTicketsByDepartment(){
-//...
-}
 
 function updateDepartment(){
     $content ='

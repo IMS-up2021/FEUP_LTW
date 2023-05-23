@@ -18,17 +18,17 @@
     }
     
     $db = getDatabaseConnection();
+    /*
+    $ticket = Ticket::createTicket($db, intval($_POST['id']));
     
-    $question = Question::getQuestion($db, intval($_POST['id']));
-    
-    if ($question) {
-        $question->title = $_POST['title'];
-        $question->save($db);
+    if ($ticket) {
+        $ticket->title = $_POST['title'];
+        $ticket->save($db);
         $session->addMessage('success', 'Question title updated');
         header('Location: ../pages/question.php?id=' . $_POST['id']);
     } else {
         $session->addMessage('error', 'Question does not exist');
         header('Location: ' . $_SERVER);
-    }
+    }*/
     
 ?>
