@@ -73,6 +73,56 @@
           $stmt = $db->prepare('UPDATE User SET name = ?, username = ?, email = ?, password = ? WHERE id = ?');
           $stmt->execute([$name, $username, $email, sha1($password), $id]);
         }
+
+
+        //admin functions 
+        public function upgradeRole(PDO $db, string $newRole) {
+          if ($this->role === 'admin') {
+              $stmt = $db->prepare('UPDATE users SET role = ? WHERE id = ?');
+              $stmt->execute([$newRole, $this->id]);
+              if ($stmt->rowCount() > 0) {
+                  $this->role = $newRole;
+                  return true;
+              }
+          }
+          return false;
+        }
+
+        function addDepartment(PDO $db, string $departmentName) {
+          if ($this->role == 'admin'){
+            $stmt = $db->prepare('INSERT INTO departments (name) VALUES (?)');
+            $stmt->execute([$departmentName]);
+        
+            if ($stmt->rowCount() > 0) {
+                return true;
+            }
+          }
+          return false;
+        }
+
+        function assignAgentToDepartment(PDO $db, int $userId, int $departmentId) {
+          if ($this->role == 'admin'){
+
+            $stmt = $db->prepare('SELECT id FROM users WHERE id = ? AND role = "agent"');
+            $stmt->execute([$userId]);
+            $agent = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+            if ($agent) {
+                $agentId = $agent['id'];
+        
+                $stmt = $db->prepare('INSERT INTO department_assignments (agent_id, department_id) VALUES (?, ?)');
+                $stmt->execute([$agentId, $departmentId]);
+        
+                // Check if was successful
+                if ($stmt->rowCount() > 0) {
+                    return true;
+                }
+            }
+          }
+          return false;
+        }
+
+        
     }
 
 ?>
