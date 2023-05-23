@@ -56,6 +56,8 @@ function getMyTicketsContent() {
 
 
 function drawProfile(User $user) {
+
+    if ($user->getRole() == 'Client'):
 ?>
     <div id="menu">
         <h2>Profile</h2>
@@ -69,6 +71,48 @@ function drawProfile(User $user) {
     <div id="contentContainer"></div>
 
     <script src="/../javascript/profile.js"></script>
+ <?php endif;    
+    if ($user->getRole() == 'Agent'):
+?>
+        <div id="menu">
+        <h2>Profile</h2>
+        <center>
+            <button id="editProfile">Edit Profile</button>
+            <button id="newTicket">New Ticket</button>
+            <button id="myTickets">My Tickets</button>
+            <button id="getTicketsByDepartment">Tickets by Department</button>
+            <button id="updateDepartment">Update Department</button>
+            <button id="updateAssignedAgent">Update Assigned Agent</button>
+            <button id="updateTicketStatus">Update Ticket Status</button>
+        </center>
+        </div>
+
+        <div id="contentContainer"></div>
+
+        <script src="/../javascript/profile.js"></script>
 <?php
+    else:
+?>
+        <div id="menu">
+        <h2>Profile</h2>
+        <center>
+            <button id="editProfile">Edit Profile</button>
+            <button id="newTicket">New Ticket</button>
+            <button id="myTickets">My Tickets</button>
+            <button id="getTicketsByDepartment">Tickets by Department</button>
+            <button id="updateDepartment">Update Department</button>
+            <button id="updateAssignedAgent">Update Assigned Agent</button>
+            <button id="updateTicketStatus">Update Ticket Status</button>
+            <button id="updateRole">Update Role</button>
+            <button id="addDepartment">Add Department</button>
+            <button id="assignAgentToDepartment">Assign Agent to Department</button>
+        </center>
+        </div>
+
+        <div id="contentContainer"></div>
+
+        <script src="/../javascript/profile.js"></script>
+<?php      
+    endif;
 }
 ?>
