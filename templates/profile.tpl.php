@@ -54,6 +54,64 @@ function getMyTicketsContent() {
     return $content;
 }
 
+function getTicketsByDepartment(){
+//...
+}
+
+function updateDepartment(){
+    $content ='
+    <form action="../database/ticket.class.php" method="POST" class="">
+
+        <label for="department">Department</label>
+        <input id="department" type="text" name="department" value=""><br></br>
+
+        <label for="ticket">Ticket</label>
+        <input id="ticket" type="text" name="tickets" value=""><br></br>
+
+        <div class="button">
+            <button type="submit">Update</button>
+        </div>
+    </form>
+    ';
+    return $content;
+}
+
+function updateAssignedAgent(){
+    $content ='
+    <form action="../database/user.class.php" method="POST" class="">
+
+        <label for="department">Department</label>
+        <input id="department" type="text" name="department" value=""><br></br>
+
+        <label for="username">Username</label>
+        <input id="user" type="text" name="user" value=""><br></br>
+
+        <div class="button">
+            <button type="submit">Assign</button>
+        </div>
+    </form>
+    ';
+    return $content;
+}
+
+function updateTicketStatuse(){
+    $content ='
+    <form action="../database/ticket.class.php" method="POST" class="">
+
+        <label for="ticket">Ticket</label>
+        <input id="ticket" type="text" name="Ticket" value=""><br></br>
+
+        <label for="status">Status</label>
+        <input id="status" type="text" name="status" value=""><br></br>
+
+        <div class="button">
+            <button type="submit">Update</button>
+        </div>
+    </form>
+    ';
+    return $content;
+}
+
 function getUpdatedRole(){
     $content = '
         <form action="./database/user.class.php" method="POST" class="">

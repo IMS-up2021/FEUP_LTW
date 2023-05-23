@@ -30,8 +30,24 @@ if (isset($_GET['action'])) {
             $content = getMyTicketsContent();
             echo $content;
             break;
+        case 'getTicketsByDepartment':
+            $content = getTicketsByDepartment();
+            echo $content;
+            break;
+        case 'updateDepartment':
+            $content = updateDepartment();
+            echo $content;
+            break;
+        case 'updateAssignedAgent':
+            $content = updateAssignedAgent();
+            echo $content;
+            break;
+        case 'updateTicketStatus':
+            $content = updateTicketStatuse();
+            echo $content;
+            break;
         case 'getUpdatedRole':
-            $content = getUpdatedRole($user);
+            $content = getUpdatedRole();
             echo $content;
             break;
         case 'getAddDepartment':

@@ -47,16 +47,16 @@ function loadContent(action) {
       phpFunction = 'getMyTicketsContent';
       break;
     case 'getTicketsByDepartment':
-      phpFunction = '';
+      phpFunction = 'getTicketsByDepartment';
       break;
     case 'updateDepartment':
-      phpFunction = '';
+      phpFunction = 'updateDepartment';
       break;
     case 'updateAssignedAgent':
-      phpFunction = '';
+      phpFunction = 'updateAssignedAgent';
       break;
     case 'updateTicketStatus':
-      phpFunction = '';
+      phpFunction = 'updateTicketStatus';
       break;
     case 'updateRole':
       phpFunction = 'getUpdatedRole';
