@@ -1,7 +1,6 @@
 <?php 
   declare(strict_types = 1); 
 
-  require_once(__DIR__ . '/../database/question.class.php');
   require_once(__DIR__ . '/../database/user.class.php');
   require_once(__DIR__ . '/../utils/session.php');
 ?>
@@ -55,11 +54,12 @@
   <script src="../javascript/script.js"></script>
 <?php } ?>
 
-<?php function drawEditQuestion(Question $question) { ?>
-  <form action="../actions/action_edit_question.php" method="post">
-    <input type="hidden" name="id" value="<?=$question->id?>">
+<?php function drawEditTicket(Ticket $ticket) { ?>
+  <form action="../actions/action_edit_ticket.php" method="post">
+    <input type="hidden" name="id" value="<?=$ticket->id?>">
     <label>Title:</label>
-    <input type="text" name="title" value="<?=$question->title?>">
+    <input type="text" name="title" value="<?=$ticket->title?>">
     <button type="submit">Save</button>
   </form>
 <?php } ?>
+
