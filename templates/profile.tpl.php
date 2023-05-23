@@ -69,7 +69,7 @@ function updateDepartment(){
         <input id="ticket" type="text" name="tickets" value=""><br></br>
 
         <div class="button">
-            <button type="submit">Update</button>
+            <button type="submit">Uodate</button>
         </div>
     </form>
     ';
@@ -190,7 +190,6 @@ function drawProfile(User $user) {
             <button id="editProfile">Edit Profile</button>
             <button id="newTicket">New Ticket</button>
             <button id="myTickets">My Tickets</button>
-            <button id="getTicketsByDepartment">Tickets by Department</button>
             <button id="updateDepartment">Update Department</button>
             <button id="updateAssignedAgent">Update Assigned Agent</button>
             <button id="updateTicketStatus">Update Ticket Status</button>
@@ -209,7 +208,6 @@ function drawProfile(User $user) {
             <button id="editProfile">Edit Profile</button>
             <button id="newTicket">New Ticket</button>
             <button id="myTickets">My Tickets</button>
-            <button id="getTicketsByDepartment">Tickets by Department</button>
             <button id="updateDepartment">Update Department</button>
             <button id="updateAssignedAgent">Update Assigned Agent</button>
             <button id="updateTicketStatus">Update Ticket Status</button>

@@ -2,7 +2,6 @@ const editProfileButton = document.getElementById('editProfile');
 const newTicketButton = document.getElementById('newTicket');
 const myTicketsButton = document.getElementById('myTickets');
 
-const getTicketsByDepartmentButton = document.getElementById('getTicketsByDepartment');
 const updateDepartmentButton = document.getElementById('updateDepartment');
 const updateAssignedAgentButton = document.getElementById('updateAssignedAgent');
 const updateTicketStatusButton = document.getElementById('updateTicketStatus');
@@ -17,7 +16,6 @@ editProfileButton.addEventListener('click', loadContent.bind(null, 'editProfile'
 newTicketButton.addEventListener('click', loadContent.bind(null, 'newTicket'));
 myTicketsButton.addEventListener('click', loadContent.bind(null, 'myTickets'));
 
-getTicketsByDepartmentButton.addEventListener('click',loadContent.bind(null, 'getTicketsByDepartment'));
 updateDepartmentButton.addEventListener('click', loadContent.bind(null, 'updateDepartment'));
 updateAssignedAgentButton.addEventListener('click', loadContent.bind(null, 'updateAssignedAgent'));
 updateTicketStatusButton.addEventListener('click', loadContent.bind(null, 'updateTicketStatus'));
@@ -45,9 +43,6 @@ function loadContent(action) {
       break;
     case 'myTickets':
       phpFunction = 'getMyTicketsContent';
-      break;
-    case 'getTicketsByDepartment':
-      phpFunction = 'getTicketsByDepartment';
       break;
     case 'updateDepartment':
       phpFunction = 'updateDepartment';
