@@ -23,6 +23,4 @@
 	drawLogo();
 	drawProfile($user);
   	drawFooter();
-	drawFAQ();
-
 ?>
