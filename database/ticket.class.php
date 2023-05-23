@@ -62,6 +62,70 @@
                 return null;
             }
         }
+
+        //agent functions
+        public static function getTicketsByDepartment(PDO $db, int $departmentId, array $filters = []): array {
+            $query = "SELECT * FROM tickets WHERE department_id = :departmentId";
+            $queryParams = [':departmentId' => $departmentId];
+    
+            // Apply filters
+            if (isset($filters['status'])) {
+                $query .= " AND status = :status";
+                $queryParams[':status'] = $filters['status'];
+            }
+    
+            if (isset($filters['priority'])) {
+                $query .= " AND priority = :priority";
+                $queryParams[':priority'] = $filters['priority'];
+            }
+    
+            // Add additional filters as needed 
+            $stmt = $db->prepare($query);
+            $stmt->execute($queryParams);
+    
+            $tickets = [];
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $ticket = new Ticket(
+                    $row['ticket_id'],
+                    $row['title'],
+                    $row['description'],
+                    new DateTime($row['date']),
+                    $row['status'],
+                    $row['creator_id'],
+                    $row['assignee_id'],
+                    $row['department_id']
+                );
+            
+                $tickets[] = $ticket;
+            }
+    
+            return $tickets;
+        }
+
+        public function updateDepartment(PDO $db, int $newDepartmentId): bool {
+            $stmt = $db->prepare("UPDATE tickets SET department_id = :newDepartmentId WHERE ticket_id = :ticketId");
+            $stmt->bindValue(':newDepartmentId', $newDepartmentId, PDO::PARAM_INT);
+            $stmt->bindValue(':ticketId', $this->id, PDO::PARAM_INT);
+    
+            return $stmt->execute();
+        }
+
+        public function updateAssignedAgent(PDO $db, int $ticketId, ?int $assigneeId): bool {
+            $stmt = $db->prepare('UPDATE tickets SET assignee_id = ? WHERE ticket_id = ?');
+            $stmt->execute([$assigneeId, $ticketId]);
+
+            return $stmt->rowCount() > 0;
+        }
+
+        public function updateTicketStatus(PDO $db, int $ticketId, string $status): bool {
+            $stmt = $db->prepare('UPDATE tickets SET status = ? WHERE ticket_id = ?');
+            $stmt->execute([$status, $ticketId]);
+
+            return $stmt->rowCount() > 0;
+        }
+
+
+        
     }
 
 
