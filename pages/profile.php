@@ -24,5 +24,4 @@
 	drawLogo();
 	drawProfile($user);
   	drawFooter();
-
 ?>
