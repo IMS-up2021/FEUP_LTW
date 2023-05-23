@@ -54,26 +54,56 @@ function getMyTicketsContent() {
     return $content;
 }
 
-function getUpdatedRole(User $user){
+function getUpdatedRole(){
     $content = '
-        <form action="../actions/upgrade_role.php" method="POST" class="role_upgrade">
-            <label for="newRole">New Role:</label>
-            <input type="text" id="newRole" name="newRole" required><br></br>
+        <form action="./database/user.class.php" method="POST" class="">
 
+            <label for="username">Username</label>
+            <input id="username" type="text" name="username" value=""><br></br>
+
+            <label for="password">Role</label>
+            <input id="password" type="text" name="password">
+        
             <div class="button">
-                <button type="submit">Upgrade Role</button>
+                <button type="submit">Update</button>
             </div>
-        </form>';
+        </form>'
+    ;
 
     return $content;
   }
 
 function getAddDepartment(){
+    $content='
+    <form action="../database/user.class.php" method="POST" class="">
 
+            <label for="department">Department</label>
+            <input id="department" type="text" name="department" value=""><br></br>
+        
+            <div class="button">
+                <button type="submit">Add</button>
+            </div>
+    </form>
+    ';
+    return $content;
 }
 
 function getAssignAgentToDepartment(){
+    $content ='
+    <form action="../database/user.class.php" method="POST" class="">
 
+        <label for="department">Department</label>
+        <input id="department" type="text" name="department" value=""><br></br>
+
+        <label for="username">Username</label>
+        <input id="user" type="text" name="user" value=""><br></br>
+
+        <div class="button">
+            <button type="submit">Add</button>
+        </div>
+    </form>
+    ';
+    return $content;
 }
 
 

@@ -30,6 +30,18 @@ if (isset($_GET['action'])) {
             $content = getMyTicketsContent();
             echo $content;
             break;
+        case 'getUpdatedRole':
+            $content = getUpdatedRole($user);
+            echo $content;
+            break;
+        case 'getAddDepartment':
+            $content = getAddDepartment();
+            echo $content;
+            break;
+        case 'getAssignAgentToDepartment':
+            $content = getAssignAgentToDepartment();
+            echo $content;
+            break;
     }
 }
 ?>

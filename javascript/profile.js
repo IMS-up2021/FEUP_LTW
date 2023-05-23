@@ -34,7 +34,7 @@ function loadContent(action) {
       contentContainer.innerHTML = this.responseText;
     }
   };
-
+  console.log(action);
   let phpFunction;
   switch (action) {
     case 'editProfile':
@@ -68,7 +68,7 @@ function loadContent(action) {
       phpFunction = 'getAssignAgentToDepartment';
       break;
   }
-
+  console.log(phpFunction)
   xhttp.open('GET', `../api/profile.php?action=${phpFunction}`, true);
   xhttp.send();
 }
