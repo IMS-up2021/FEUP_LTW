@@ -58,7 +58,7 @@ function getMyTicketsContent() {
 
 function updateDepartment(){
     $content ='
-    <form action="../database/ticket.class.php" method="POST" class="">
+    <form action="../database/ticket.class.php" method="POST" class="login_register">
 
         <label for="department">Department</label>
         <input id="department" type="text" name="department" value=""><br></br>
@@ -76,7 +76,7 @@ function updateDepartment(){
 
 function updateAssignedAgent(){
     $content ='
-    <form action="../database/user.class.php" method="POST" class="">
+    <form action="../database/user.class.php" method="POST" class="login_register">
 
         <label for="department">Department</label>
         <input id="department" type="text" name="department" value=""><br></br>
@@ -94,7 +94,7 @@ function updateAssignedAgent(){
 
 function updateTicketStatuse(){
     $content ='
-    <form action="../database/ticket.class.php" method="POST" class="">
+    <form action="../database/ticket.class.php" method="POST" class="login_register">
 
         <label for="ticket">Ticket</label>
         <input id="ticket" type="text" name="Ticket" value=""><br></br>
@@ -112,7 +112,7 @@ function updateTicketStatuse(){
 
 function getUpdatedRole(){
     $content = '
-        <form action="./database/user.class.php" method="POST" class="">
+        <form action="./database/user.class.php" method="POST" class="login_register">
 
             <label for="username">Username</label>
             <input id="username" type="text" name="username" value=""><br></br>
@@ -131,7 +131,7 @@ function getUpdatedRole(){
 
 function getAddDepartment(){
     $content='
-    <form action="../database/user.class.php" method="POST" class="">
+    <form action="../database/user.class.php" method="POST" class="login_register">
 
             <label for="department">Department</label>
             <input id="department" type="text" name="department" value=""><br></br>
@@ -146,7 +146,7 @@ function getAddDepartment(){
 
 function getAssignAgentToDepartment(){
     $content ='
-    <form action="../database/user.class.php" method="POST" class="">
+    <form action="../database/user.class.php" method="POST" class="login_register">
 
         <label for="department">Department</label>
         <input id="department" type="text" name="department" value=""><br></br>
