@@ -263,10 +263,26 @@ input {
 }
 
 /*Menu pages*/
+h1{
+    text-align: center;
+    color:white;
+    text-shadow: 2px 2px 4px #481872;
+    margin:10px;
+}
+@media only screen and (max-width: 540px) {
+    h1 {
+        grid-template-columns: auto;
+    }
+}
 #menu h2 {
     text-align: center;
     background-color: white;
     margin: 0;
+}
+
+#menu a{
+    text-decoration: none;
+    color: #481872;
 }
 
 @media only screen and (max-width: 540px) {
@@ -457,6 +473,17 @@ h3{
     border-radius: 10px;
     margin: 10px;
 
+}
+
+#prof button{
+    background-color: #481872;
+    border: #7410ad;
+    font-size: 1.5em;
+    height: 4em;
+    width: 7em;
+    border-radius: 10px;
+    color: white;
+    margin:30px;
 }
 
 
