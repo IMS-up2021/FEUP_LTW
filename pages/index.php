@@ -21,14 +21,19 @@
 	$users = $stmt->fetchAll();
 
 	echo '<h1> Users </h1>';
-
-	foreach( $users as $user) {
-		echo '<h2>' . $user['name'] . '</h2>';
-		echo '<p>' . $user['id'] . '</p>';
-		echo '<p>' . $user['username'] . '</p>';
-		echo '<p>' . $user['email'] . '</p>';
-		echo '<p>' . $user['password'] . '</p>';
-	  }
+?>
+	<div id="menu">
+		<?php
+			foreach( $users as $user) {
+				echo '<h2>' . $user['name'] . '</h2>';
+				echo '<p>' . $user['id'] . '</p>';
+				echo '<p>' . $user['username'] . '</p>';
+				echo '<p>' . $user['email'] . '</p>';
+				echo '<p>' . $user['password'] . '</p>';
+			}
+		?>
+	</div>
+	<?php		
 
 	$stmt = $db->prepare('SELECT * FROM DEPARTMENT');
 	$stmt->execute();
