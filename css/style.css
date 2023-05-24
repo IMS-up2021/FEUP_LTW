@@ -1,4 +1,3 @@
-/*template comum em todas as paginas*/
 body {
     background-color: #9d8aac;
     width: 60em;
@@ -7,7 +6,22 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+h2{
+    text-align: center;
+    background-color: white;
+}
 
+h3{
+    color:#481872;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+}
+
+/* Navigation bar */
 .navbar {
     display: grid;
     grid-template-columns: repeat(4, auto) 1fr repeat(2, auto);
@@ -25,18 +39,13 @@ body {
     }
 }
 
-.navbar a {
+.navbar a,
+.navbar input[type="text"] {
     color: white;
     text-decoration: none;
     font-size: 17px;
     text-align: center;
     align-self: center;
-}
-
-@media only screen and (max-width: 540px) {
-    .navbar a {
-        grid-template-columns: auto;
-    }
 }
 
 .navbar a:hover {
@@ -45,65 +54,18 @@ body {
     color: black;
 }
 
-@media only screen and (max-width: 540px) {
-    .navbar a:hover {
-        grid-template-columns: auto;
-    }
-}
-
 .navbar a.active {
     background-color: #7a2cbd;
     padding: 10px;
 }
 
-@media only screen and (max-width: 540px) {
-    .navbar a.active {
-        grid-template-columns: auto;
-    }
-}
-
-.navbar input[type=text] {
+.navbar input[type="text"] {
     padding: 8px;
     border: none;
     margin-top: 8px;
     margin-right: 16px;
     font-size: 17px;
     border-radius: 10px;
-}
-
-@media only screen and (max-width: 540px) {
-    .navbar input[type=text] {
-        grid-template-columns: auto;
-    }
-}
-
-#faq {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-}
-
-@media only screen and (max-width: 540px) {
-    #faq {
-        grid-template-columns: auto;
-    }
-}
-
-#faq a {
-    text-decoration: none;
-    color: black;
-}
-
-@media only screen and (max-width: 540px) {
-    #faq a {
-        grid-template-columns: auto;
-    }
-}
-
-footer {
-    position: fixed;
-    bottom: 0;
-    right: 10px;
 }
 
 @media only screen and (max-width: 540px) {
@@ -125,16 +87,12 @@ footer {
 }
 
 @media only screen and (max-width: 540px) {
-    .login_register {
-        grid-template-columns: auto;
-    }
-}
-
-@media only screen and (max-width: 540px) {
+    .login_register,
     .login_register input[type=text] {
         grid-template-columns: auto;
     }
 }
+
 .button {
     display: grid;
     padding: 2em;
@@ -142,24 +100,19 @@ footer {
     text-align: center;
 }
 
-@media only screen and (max-width: 540px) {
-    .button {
-        grid-template-columns: auto;
-    }
-}
-
 button {
     background-color: #481872;
     border: #7410ad;
     font-size: 1.5em;
     height: 2em;
-    width: 7em;
+    width: fit-content;
     border-radius: 10px;
     color: white;
 }
 
 @media only screen and (max-width: 540px) {
-    button {
+    button,
+    .button {
         grid-template-columns: auto;
     }
 }
@@ -274,55 +227,41 @@ h1{
         grid-template-columns: auto;
     }
 }
-#menu h2 {
-    text-align: center;
-    background-color: white;
-    margin: 0;
-}
-
-#menu a{
-    text-decoration: none;
-    color: #481872;
-}
-
-@media only screen and (max-width: 540px) {
-    #menu h2 {
-        grid-template-columns: auto;
-    }
-}
 
 #menu {
+    text-align: center;
     background-color: #e3ceef;
     padding: 10px;
     border-radius: 10px;
     margin: 10px;
 }
 
+#menu h2 {
+    background-color: white;
+    margin: 0;
+}
+
 @media only screen and (max-width: 540px) {
-    #menu {
+    #menu h2,
+    #menu p,
+    #menu button {
         grid-template-columns: auto;
     }
+}
+
+#menu a {
+    text-decoration: none;
+    color: #481872;
 }
 
 #menu p {
     font-size: 20px;
 }
 
-@media only screen and (max-width: 540px) {
-    #menu p {
-        grid-template-columns: auto;
-    }
-}
-
 #menu button {
     margin: 30px;
 }
 
-@media only screen and (max-width: 540px) {
-    #menu button {
-        grid-template-columns: auto;
-    }
-}
 
 .Logo {
     margin: 5px;
@@ -336,116 +275,55 @@ h1{
     }
 }
 
-/*FAQ page*/
-#faq1{
-    display:none;
-}
-#faq2{
-    display:none;
-}
-#faq3{
-    display:none;
-}
-#faq4{
-    display:none;
-}
-#faq5{
-    display:none;
-}
-#faq6{
-    display:none;
-}
-#faq7{
-    display:none;
-}
-#faq8{
-    display:none;
-}
-#faq9{
-    display:none;
-}
-#faq10{
-    display:none;
+#faq {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
 }
 
-label{
+@media only screen and (max-width: 540px) {
+    #faq,
+    #faq a {
+        grid-template-columns: auto;
+    }
+}
+
+#faq a {
+    text-decoration: none;
+    color: black;
+}
+
+
+[id^="faq"] {
+    display: none;
+}
+
+label {
     -webkit-appearance: push-button;
     -moz-appearance: button;
-    display:inline-block;
-    cursor:pointer;
+    display: inline-block;
+    cursor: pointer;
     padding: 5px;
 }
-#mostra1{
-    display:none;
-    color:#481872;
-}
-#mostra2{
-    display:none;
-    color:#481872;
-}
-#mostra3{
-    display:none;
-    color:#481872;
-}
-#mostra4{
-    display:none;
-    color:#481872;
-}
-#mostra5{
-    display:none;
-    color:#481872;
-}
-#mostra6{
-    display:none;
-    color:#481872;
-}
-#mostra7{
-    display:none;
-    color:#481872;
-}
-#mostra8{
-    display:none;
-    color:#481872;
-}
-#mostra9{
-    display:none;
-    color:#481872;
-}
-#mostra10{
-    display:none;
-    color:#481872;
+
+[id^="mostra"] {
+    display: none;
+    color: #481872;
 }
 
-#faq1:checked ~ #mostra1{
+#faq1:checked ~ #mostra1,
+#faq2:checked ~ #mostra2,
+#faq3:checked ~ #mostra3,
+#faq4:checked ~ #mostra4,
+#faq5:checked ~ #mostra5,
+#faq6:checked ~ #mostra6,
+#faq7:checked ~ #mostra7,
+#faq8:checked ~ #mostra8,
+#faq9:checked ~ #mostra9,
+#faq10:checked ~ #mostra10 {
     display: block;
 }
-#faq2:checked ~ #mostra2{
-    display: block;
-}
-#faq3:checked ~ #mostra3{
-    display: block;
-}
-#faq4:checked ~ #mostra4{
-    display: block;
-}
-#faq5:checked ~ #mostra5{
-    display: block;
-}
-#faq6:checked ~ #mostra6{
-    display: block;
-}
-#faq7:checked ~ #mostra7{
-    display: block;
-}
-#faq8:checked ~ #mostra8{
-    display: block;
-}
-#faq9:checked ~ #mostra9{
-    display: block;
-}
-#faq10:checked ~ #mostra10{
-    display: block;
-}
+
 
 /*Profile page*/
 #department {
@@ -456,15 +334,6 @@ label{
     #department {
         grid-template-columns: auto;
     }
-}
-
-h2{
-    text-align: center;
-    background-color: white;
-}
-
-h3{
-    color:#481872;
 }
 
 #prof{
@@ -485,5 +354,3 @@ h3{
     color: white;
     margin:30px;
 }
-
-

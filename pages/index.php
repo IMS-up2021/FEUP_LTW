@@ -28,6 +28,7 @@
 		echo '<p>' . $user['username'] . '</p>';
 		echo '<p>' . $user['email'] . '</p>';
 		echo '<p>' . $user['password'] . '</p>';
+		echo'<p>' . $user['role'] . '</p>';
 	  }
 
 	$stmt = $db->prepare('SELECT * FROM DEPARTMENT');
@@ -53,5 +54,5 @@
 <?php	
 
 	drawFooter();
-
+	
 ?>

@@ -28,7 +28,8 @@ function getEditProfileContent(User $user) {
 
 
 function getNewTicketContent() {
-    $content .= '<form id="ticketForm" class="login_register">';
+    $content = '';
+    $content .= '<form action="../actions/ticket_submission.php" method="POST">';
     $content .= '<label for="title">Title</label>';
     $content .= '<input id="title" type="text" name="title"><br><br>';
     $content .= '<label for="description">Description</label>';
@@ -162,46 +163,12 @@ function getAssignAgentToDepartment(){
 }
 
 
-function drawProfile(User $user) {
+function drawProfile(User $user) { ?>
 
-    if ($user->getRole() === 'Client'):
-?>
+    <?php $userRole = $user->getRole(); ?>
+
     <div id="menu">
         <h2>Profile</h2>
-        <center>
-            <button id="editProfile">Edit Profile</button>
-            <button id="newTicket">New Ticket</button>
-            <button id="myTickets">My Tickets</button>
-        </center>
-    </div>
-
-    <div id="contentContainer"></div>
-
-    <script src="/../javascript/profile.js"></script>
- <?php endif;    
-    if ($user->getRole() === 'Agent'):
-?>
-        <div id="menu">
-        <h2>Profile</h2>
-        <center>
-            <button id="editProfile">Edit Profile</button>
-            <button id="newTicket">New Ticket</button>
-            <button id="myTickets">My Tickets</button>
-            <button id="updateDepartment">Update Department</button>
-            <button id="updateAssignedAgent">Update Assigned Agent</button>
-            <button id="updateTicketStatus">Update Ticket Status</button>
-        </center>
-        </div>
-
-        <div id="contentContainer"></div>
-
-        <script src="/../javascript/profile.js"></script>
-<?php
-    else:
-?>
-        <div id="menu">
-        <h2>Profile</h2>
-        <center>
             <button id="editProfile">Edit Profile</button>
             <button id="newTicket">New Ticket</button>
             <button id="myTickets">My Tickets</button>
@@ -211,13 +178,14 @@ function drawProfile(User $user) {
             <button id="updateRole">Update Role</button>
             <button id="addDepartment">Add Department</button>
             <button id="assignAgentToDepartment">Assign Agent to Department</button>
-        </center>
-        </div>
+    </div>
 
-        <div id="contentContainer"></div>
+    <div id="contentContainer"></div>
 
-        <script src="/../javascript/profile.js"></script>
-<?php      
-    endif;
-}
-?>
+    <input type="hidden" id="userRole" value="<?php echo $userRole; ?>">
+
+    <script src="/../javascript/profile.js"></script>
+    
+    <script> initializeProfile(document.getElementById("userRole").value);</script>
+
+<?php } ?>

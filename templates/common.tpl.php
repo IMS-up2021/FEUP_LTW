@@ -76,7 +76,7 @@
 
 <?php function drawLogo() {?>
 	<center>
-        <img src="Group 1.png" class="Logo">
+        <img src="/../docs/Group 1.png" class="Logo">
     </center>  
 <?php } ?>
 	   

@@ -32,7 +32,6 @@ function loadContent(action) {
       contentContainer.innerHTML = this.responseText;
     }
   };
-  console.log(action);
   let phpFunction;
   switch (action) {
     case 'editProfile':
@@ -63,7 +62,6 @@ function loadContent(action) {
       phpFunction = 'getAssignAgentToDepartment';
       break;
   }
-  console.log(phpFunction)
   xhttp.open('GET', `../api/profile.php?action=${phpFunction}`, true);
   xhttp.send();
 }
@@ -110,7 +108,8 @@ document.addEventListener('DOMContentLoaded', function() {
               } else {
                   for (var i = 0; i < tickets.length; i++) {
                       var ticket = tickets[i];
-                      html += generateTicketHTML(ticket);
+                      var departmentName = ticket.department_name;
+                      html += generateTicketHTML(ticket, departmentName);
                   }
               }
               var ticketsContainer = document.getElementById('tickets-container');
@@ -137,3 +136,30 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
 });
+
+function initializeProfile(userRole) {
+  var buttons = Array.from(document.getElementsByTagName("button"));
+
+  buttons.forEach(function (button) {
+    if (userRole === "client") {
+      if (
+        button.id !== "editProfile" &&
+        button.id !== "newTicket" &&
+        button.id !== "myTickets"
+      ) {
+        button.style.display = "none";
+      }
+    } else if (userRole === "agent") {
+      if (
+        button.id !== "editProfile" &&
+        button.id !== "newTicket" &&
+        button.id !== "myTickets" &&
+        button.id !== "updateDepartment" &&
+        button.id !== "updateAssignedAgent" &&
+        button.id !== "updateTicketStatus"
+      ) {
+        button.style.display = "none";
+      }
+    }
+  });
+}

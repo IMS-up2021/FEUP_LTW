@@ -63,6 +63,23 @@
             }
         }
 
+
+        public static function editTicket($db, $ticketId, $title, $description, $department) {
+            $query = "UPDATE Ticket SET title = :title, description = :description, department_id = :department_id WHERE id = :ticket_id";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':title', $title);
+            $statement->bindParam(':description', $description);
+            $statement->bindParam(':department_id', $department);
+            $statement->bindParam(':ticket_id', $ticketId);
+
+            if ($statement->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
         //agent functions
         public static function getTicketsByDepartment(PDO $db, int $departmentId, array $filters = []): array {
             $query = "SELECT * FROM tickets WHERE department_id = :departmentId";

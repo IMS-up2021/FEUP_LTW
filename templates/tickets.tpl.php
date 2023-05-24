@@ -24,34 +24,35 @@
     <p><strong>Date:</strong> <?php echo $ticket->date->format('Y-m-d'); ?></p>
     <p><strong>Status:</strong> <?php echo $ticket->status; ?></p>
     <p><strong>Department:</strong> <?php echo $department_name ?? 'None'; ?></p>
-
+    
     <?php if ($session->getId() === $ticket->creator_id): ?>
-    <button class="edit-ticket-btn" data-ticket-id="<?php echo $ticket->id; ?>">Edit Ticket</button>
+      <button class="edit-ticket-button" data-ticket-id="<?php echo $ticket->id; ?>">Edit Ticket</button>
     <?php endif; ?>
 
-    <form id="editTicketForm" class="ticket-form" style="display: none;">
-      <h2>Edit Ticket</h2>
-      <input type="hidden" id="editTicketId" name="editTicketId" value="">
+  </div>
+
+  <div id="editTicketForm<?php echo $ticket->id; ?>" class="edit-ticket-form" style="display: none;">
+    <h3>Edit Ticket</h3>
+    <form action="../actions/edit_ticket.php" method="POST">
+      <input type="hidden" name="editTicketId" value="<?php echo $ticket->id; ?>">
       
-      <label for="editTicketTitle">Title</label>
-      <input type="text" id="editTicketTitle" name="editTicketTitle">
+      <label for="editTicketTitle">Title:</label>
+      <input type="text" id="editTicketTitle" name="editTicketTitle" value="<?php echo $ticket->title; ?>">
 
-      <label for="editTicketDescription">Description</label>
-      <textarea id="editTicketDescription" name="editTicketDescription"></textarea>
+      <label for="editTicketDescription">Description:</label>
+      <textarea id="editTicketDescription" name="editTicketDescription"><?php echo $ticket->description; ?></textarea>
 
-      <label for="editTicketDepartment">Department</label>
+      <label for="editTicketDepartment">Department:</label>
       <select id="editTicketDepartment" name="editTicketDepartment">
         <option value="">None</option>
       </select>
 
-      <div class="button">
-        <button id="saveChangesBtn" type="submit">Save Changes</button>
-      </div>
-  </form>
-
-
+      <button type="submit">Save Changes</button>
+    </form>
   </div>
+
   <script src="../javascript/script.js"></script>
+
 <?php } ?>
 
 <?php function drawEditTicket(Ticket $ticket) { ?>
