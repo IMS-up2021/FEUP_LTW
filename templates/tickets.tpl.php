@@ -6,8 +6,8 @@
 ?>
 
 <?php function drawSimpleTicket(Ticket $ticket, string $department_name) { ?>
-  <div class="ticket">
-    <h3><a href="ticket.php?ticketId=<?php echo $ticket->id; ?>" class="ticket-link">Ticket <?php echo $ticket->id; ?></a></h3>
+  <div id="menu">
+    <h2><a href="ticket.php?ticketId=<?php echo $ticket->id; ?>" class="ticket-link">Ticket <?php echo $ticket->id; ?></a></h2>
     <p><strong>Title:</strong> <?php echo $ticket->title; ?></p>
     <p><strong>Description:</strong> <?php echo $ticket->description; ?></p>
     <p><strong>Date:</strong> <?php echo $ticket->date->format('Y-m-d'); ?></p>
@@ -17,8 +17,8 @@
 <?php } ?>
 
 <?php function drawTicket(Session $session, Ticket $ticket, string $department_name) { ?>
-  <div class="ticket">
-    <h3><a href="ticket.php?ticketId=<?php echo $ticket->id; ?>" class="ticket-link">Ticket <?php echo $ticket->id; ?></a></h3>
+  <div id="menu">
+    <h2><a href="ticket.php?ticketId=<?php echo $ticket->id; ?>" class="ticket-link">Ticket <?php echo $ticket->id; ?></a></h2>
     <p><strong>Title:</strong> <?php echo $ticket->title; ?></p>
     <p><strong>Description:</strong> <?php echo $ticket->description; ?></p>
     <p><strong>Date:</strong> <?php echo $ticket->date->format('Y-m-d'); ?></p>
