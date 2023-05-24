@@ -16,7 +16,9 @@
   </div>
 <?php } ?>
 
-<?php function drawTicket(Session $session, Ticket $ticket, string $department_name) { ?>
+<?php
+function drawTicket(Session $session, Ticket $ticket, string $department_name) {
+?>
   <div id="menu">
     <h2><a href="ticket.php?ticketId=<?php echo $ticket->id; ?>" class="ticket-link">Ticket <?php echo $ticket->id; ?></a></h2>
     <p><strong>Title:</strong> <?php echo $ticket->title; ?></p>
@@ -24,12 +26,14 @@
     <p><strong>Date:</strong> <?php echo $ticket->date->format('Y-m-d'); ?></p>
     <p><strong>Status:</strong> <?php echo $ticket->status; ?></p>
     <p><strong>Department:</strong> <?php echo $department_name ?? 'None'; ?></p>
-    
-    <?php if ($session->getId() === $ticket->creator_id): ?>
-      <button class="edit-ticket-button" data-ticket-id="<?php echo $ticket->id; ?>">Edit Ticket</button>
-    <?php endif; ?>
 
   </div>
+<?php
+}
+
+function drawTicketCreator(Ticket $ticket) {
+?>
+  <button class="edit-ticket-button" data-ticket-id="<?php echo $ticket->id; ?>">Edit Ticket</button>
 
   <div id="editTicketForm<?php echo $ticket->id; ?>" class="edit-ticket-form" style="display: none;">
     <h3>Edit Ticket</h3>
@@ -52,15 +56,32 @@
   </div>
 
   <script src="../javascript/script.js"></script>
+<?php
+}
 
-<?php } ?>
+function drawTicketAgent(Ticket $ticket){
+?>
+  <button class="edit-department-button" data-ticket-id="<?php echo $ticket->id; ?>">Edit Department</button>
 
-<?php function drawEditTicket(Ticket $ticket) { ?>
-  <form action="../actions/action_edit_ticket.php" method="post">
-    <input type="hidden" name="id" value="<?=$ticket->id?>">
-    <label>Title:</label>
-    <input type="text" name="title" value="<?=$ticket->title?>">
-    <button type="submit">Save</button>
-  </form>
-<?php } ?>
+  <div id="editDepartmentForm<?php echo $ticket->id; ?>" class="edit-department-form" style="display: none;">
+    <h3>Edit Department</h3>
+    <form action="../actions/edit_department.php" method="POST">
+      <input type="hidden" name="editTicketId" value="<?php echo $ticket->id; ?>">
+
+      <label for="editTicketDepartment">Department:</label>
+      <select id="editTicketDepartment" name="editTicketDepartment">
+        <option value="">None</option>
+
+      </select>
+
+      <button type="submit">Save Changes</button>
+
+    </form>
+  </div>
+
+  <script src="../javascript/script.js"></script>
+<?php
+}
+
+?>
 

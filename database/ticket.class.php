@@ -79,6 +79,19 @@
             }
         }
 
+        public static function editDepartment($db, $ticketId, $department) {
+            $query = "UPDATE Ticket SET department_id = :department_id WHERE id = :ticket_id";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':department_id', $department);
+            $statement->bindParam(':ticket_id', $ticketId);
+
+            if ($statement->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
 
         //agent functions
         public static function getTicketsByDepartment(PDO $db, int $departmentId, array $filters = []): array {
@@ -117,14 +130,6 @@
             }
     
             return $tickets;
-        }
-
-        public function updateDepartment(PDO $db, int $newDepartmentId): bool {
-            $stmt = $db->prepare("UPDATE tickets SET department_id = :newDepartmentId WHERE ticket_id = :ticketId");
-            $stmt->bindValue(':newDepartmentId', $newDepartmentId, PDO::PARAM_INT);
-            $stmt->bindValue(':ticketId', $this->id, PDO::PARAM_INT);
-    
-            return $stmt->execute();
         }
 
         public function updateAssignedAgent(PDO $db, int $ticketId, ?int $assigneeId): bool {

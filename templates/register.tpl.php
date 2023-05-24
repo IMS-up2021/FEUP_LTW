@@ -4,7 +4,7 @@
     require_once(__DIR__ . '/../utils/session.php');
 ?>
 
-<?php function drawRegisterForm() { ?>
+<?php function drawRegisterForm(Session $session) { ?>
     <div class="frase">
         <p>Create your account!</p>
     </div>
@@ -29,7 +29,6 @@
         
         <label>Role</label>
             <select id="role" name="role">
-   
                 <option value="client">Client</option>
                 <option value="agent">Agent</option>
                 <option value="admin">Admin</option>

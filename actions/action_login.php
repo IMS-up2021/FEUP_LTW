@@ -15,6 +15,7 @@
     if ($user) {
         $session->setId($user->id);
         $session->setName($user->name);
+        $session->setRole($user->role);
         header('Location: ../pages/index.php');
         $session->addMessage('sucess', 'Login successful!');
     }

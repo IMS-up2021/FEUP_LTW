@@ -49,6 +49,13 @@ if ($ticketId !== null) {
         );
 
         drawTicket($session, $ticketObject, $departmentName);
+
+        if($session->getId() === $ticket['creator_id']) {
+            drawTicketCreator($ticketObject);
+        }
+        if ($session->getRole() === 'agent' || $session->getRole() === 'admin') {
+            drawTicketAgent($ticketObject);
+        }
     } else {
         echo 'Ticket not found.';
     }

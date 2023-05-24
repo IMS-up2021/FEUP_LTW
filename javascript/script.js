@@ -1,4 +1,3 @@
-
 //Ticket search
 
 const searchQuestion = document.querySelector('#searchquestion');
@@ -76,43 +75,37 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// Add a click event listener to the edit ticket button
-// var editTicketButton = document.querySelector(".edit-ticket-btn");
-// var editTicketForm = document.getElementById("editTicketForm");
+document.addEventListener('DOMContentLoaded', function() {
+  var editButton = document.querySelector('.edit-department-button');
+  var ticketId = editButton.getAttribute('data-ticket-id');
+  var editDepartmentForm = document.getElementById('editDepartmentForm' + ticketId);
+  var editTicketDepartmentSelect = editDepartmentForm.querySelector('#editTicketDepartment');
 
-// editTicketButton.addEventListener('click', function() {
-//   var xhr = new XMLHttpRequest();
-//   var editTicketForm = document.getElementById('editTicketForm');
-//   var editTicketTitleInput = document.getElementById('editTicketTitle');
-//   var editTicketDescriptionInput = document.getElementById('editTicketDescription');
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '../api/get_departments.php', true);
+  xhr.responseType = 'json';
 
-//   xhr.open('GET', '../api/get_departments.php', true);
-//   xhr.responseType = 'json';
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      var departments = xhr.response;
 
-//   xhr.onload = function() {
-//     if (xhr.status === 200) {
-//       var departments = xhr.response;
-      
-//       var optionsHTML = '<option value="">None</option>';
-//       departments.forEach(function(department) {
-//         optionsHTML += '<option value="' + department.id + '">' + department.name + '</option>';
-//       });
-      
-//       document.getElementById('editTicketDepartment').innerHTML = optionsHTML;
+      var optionsHTML = '<option value="">None</option>';
+      departments.forEach(function(department) {
+        optionsHTML += '<option value="' + department.id + '">' + department.name + '</option>';
+      });
 
-//       // Get the current ticket attributes
-//       var ticketTitle = '<?php echo $ticket->title; ?>';
-//       var ticketDescription = '<?php echo $ticket->description; ?>';
+      editTicketDepartmentSelect.innerHTML = optionsHTML;
+    }
+  };
 
-//       // Set the current ticket attributes in the form fields
-//       editTicketTitleInput.value = ticketTitle;
-//       editTicketDescriptionInput.value = ticketDescription;
-//     }
-//   };
+  xhr.send();
 
-//   xhr.send();
-
-//   editTicketForm.style.display = editTicketForm.style.display === 'none' ? 'block' : 'none';
-// });
-
+  editButton.addEventListener('click', function() {
+    if (editDepartmentForm.style.display === 'none') {
+      editDepartmentForm.style.display = 'block';
+    } else {
+      editDepartmentForm.style.display = 'none';
+    }
+  });
+});
 

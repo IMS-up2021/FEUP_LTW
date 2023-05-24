@@ -62,9 +62,8 @@
             } else return null;
         }
 
-        static function createUserWithPassword(PDO $db, string $name, string $username, string $email, string $password) : ?User {
+        static function createUserWithPassword(PDO $db, string $name, string $username, string $email, string $password, string $role) : ?User {
           $stmt = $db->prepare('INSERT INTO User (name, username, email, password, role) VALUES (?, ?, ?, ?, ?)');
-          $role = 'client'; // Set the default role to 'client'
           $stmt->execute([$name, $username, $email, sha1($password), $role]);
   
           if ($stmt->rowCount() > 0) {

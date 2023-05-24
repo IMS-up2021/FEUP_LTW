@@ -37,6 +37,15 @@
         $_SESSION['name'] = $name;
         }
 
+        public function setRole(string $role) {
+            $_SESSION['role'] = $role;
+        }
+        
+        public function getRole() : ?string {
+            return isset($_SESSION['role']) ? $_SESSION['role'] : null;
+        }
+        
+
         public function addMessage(string $type, string $text) {
             $_SESSION['messages'][] = array('type' => $type, 'text' => $text);
           }

@@ -10,11 +10,12 @@
 
     $db = getDatabaseConnection();
 
-    $user = User::createUserWithPassword($db, $_POST['name'], $_POST['username'], $_POST['email'], $_POST['password']);
+    $user = User::createUserWithPassword($db, $_POST['name'], $_POST['username'], $_POST['email'], $_POST['password'], $_POST['role']);
 
     if ($user) {
         $session->setId($user->id);
         $session->setName($user->name);
+        $session->setRole($user->role);
         $session->addMessage('sucess', 'Register successful!');
         header('Location: ../pages/index.php');
         

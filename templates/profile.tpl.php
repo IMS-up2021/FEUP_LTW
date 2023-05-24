@@ -28,20 +28,24 @@ function getEditProfileContent(User $user) {
 
 
 function getNewTicketContent() {
-    $content = '';
-    $content .= '<form action="../actions/ticket_submission.php" method="POST">';
-    $content .= '<label for="title">Title</label>';
-    $content .= '<input id="title" type="text" name="title"><br><br>';
-    $content .= '<label for="description">Description</label>';
-    $content .= '<input id="description" type="text" name="description"><br><br>';
-    $content .= '<label for="department">Departments</label>';
-    $content .= '<select id="department" name="department">';
-    $content .= '<option value="">None</option>';
-    $content .= '</select>';
-    $content .= '<div class="button">';
-    $content .= '<button id="submitTicket" type="submit">Submit Ticket</button><br><br>';
-    $content .= '</div>';
-    $content .= '</form>';
+    $content = '
+    <form action="../actions/ticket_submission.php" method="POST">
+      <label for="title">Title:</label>
+      <input id="title" type="text" name="title"><br><br>
+      
+      <label for="description">Description:</label>
+      <input id="description" type="text" name="description"><br><br>
+      
+      <label for="department">Department:</label>
+      <select id="department" name="department">
+        <option value="">None</option>
+      </select><br><br>
+      
+      <div class="button">
+        <button id="submitTicket" type="submit">Submit Ticket</button>
+      </div>
+    </form>
+    ';    
 
     return $content;
 }
@@ -51,25 +55,6 @@ function getMyTicketsContent() {
     $content = '
     <div id="tickets-container">
     </div>    
-    ';
-    return $content;
-}
-
-
-function updateDepartment(){
-    $content ='
-    <form action="../database/ticket.class.php" method="POST" class="login_register">
-
-        <label for="department">Department</label>
-        <input id="department" type="text" name="department" value=""><br></br>
-
-        <label for="ticket">Ticket</label>
-        <input id="ticket" type="text" name="tickets" value=""><br></br>
-
-        <div class="button">
-            <button type="submit">Uodate</button>
-        </div>
-    </form>
     ';
     return $content;
 }
@@ -172,7 +157,6 @@ function drawProfile(User $user) { ?>
             <button id="editProfile">Edit Profile</button>
             <button id="newTicket">New Ticket</button>
             <button id="myTickets">My Tickets</button>
-            <button id="updateDepartment">Update Department</button>
             <button id="updateAssignedAgent">Update Assigned Agent</button>
             <button id="updateTicketStatus">Update Ticket Status</button>
             <button id="updateRole">Update Role</button>

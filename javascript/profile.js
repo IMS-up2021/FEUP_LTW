@@ -2,7 +2,6 @@ const editProfileButton = document.getElementById('editProfile');
 const newTicketButton = document.getElementById('newTicket');
 const myTicketsButton = document.getElementById('myTickets');
 
-const updateDepartmentButton = document.getElementById('updateDepartment');
 const updateAssignedAgentButton = document.getElementById('updateAssignedAgent');
 const updateTicketStatusButton = document.getElementById('updateTicketStatus');
 
@@ -16,7 +15,6 @@ editProfileButton.addEventListener('click', loadContent.bind(null, 'editProfile'
 newTicketButton.addEventListener('click', loadContent.bind(null, 'newTicket'));
 myTicketsButton.addEventListener('click', loadContent.bind(null, 'myTickets'));
 
-updateDepartmentButton.addEventListener('click', loadContent.bind(null, 'updateDepartment'));
 updateAssignedAgentButton.addEventListener('click', loadContent.bind(null, 'updateAssignedAgent'));
 updateTicketStatusButton.addEventListener('click', loadContent.bind(null, 'updateTicketStatus'));
 
@@ -42,9 +40,6 @@ function loadContent(action) {
       break;
     case 'myTickets':
       phpFunction = 'getMyTicketsContent';
-      break;
-    case 'updateDepartment':
-      phpFunction = 'updateDepartment';
       break;
     case 'updateAssignedAgent':
       phpFunction = 'updateAssignedAgent';
@@ -154,7 +149,6 @@ function initializeProfile(userRole) {
         button.id !== "editProfile" &&
         button.id !== "newTicket" &&
         button.id !== "myTickets" &&
-        button.id !== "updateDepartment" &&
         button.id !== "updateAssignedAgent" &&
         button.id !== "updateTicketStatus"
       ) {
